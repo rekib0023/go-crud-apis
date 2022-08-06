@@ -5,7 +5,8 @@ import (
 	"github.com/rekib0023/go-crud-apis/controllers"
 )
 
-func Setup(api fiber.Router) {
+func Setup(app *fiber.App) {
+	api := app.Group("/api")
 	GetUserRoutes(api)
 	GetProductRoutes(api)
 }
@@ -30,8 +31,8 @@ func userRoutes(api fiber.Router) {
 
 func productRoutes(api fiber.Router) {
 	api.Post("/", controllers.CreateProduct)
-	api.Get("/", controllers.GetUsers)
-	api.Get("/:id", controllers.GetUser)
-	api.Put("/:id", controllers.UpdateUser)
-	api.Delete("/:id", controllers.DeleteUser)
+	api.Get("/", controllers.GetProducts)
+	api.Get("/:id", controllers.GetProduct)
+	api.Put("/:id", controllers.UpdateProduct)
+	api.Delete("/:id", controllers.DeleteProduct)
 }

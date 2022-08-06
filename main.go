@@ -12,8 +12,8 @@ func main() {
 	database.Connect()
 
 	app := fiber.New()
-	api := app.Group("/api")
 
-	routes.Setup(api)
+	routes.Setup(app)
+
 	log.Fatal(app.Listen(":8000"))
 }
