@@ -34,7 +34,7 @@ func CreateUser(c *fiber.Ctx) error {
 
 	responseUser := UserResponse(user)
 
-	return c.Status(fiber.StatusOK).JSON(responseUser)
+	return c.Status(fiber.StatusCreated).JSON(responseUser)
 }
 
 func GetUsers(c *fiber.Ctx) error {
@@ -129,5 +129,5 @@ func DeleteUser(c *fiber.Ctx) error {
 		return c.Status(fiber.ErrNotFound.Code).JSON(err.Error())
 	}
 
-	return c.Status(fiber.StatusOK).JSON("Successfully Deleted User")
+	return c.Status(fiber.StatusNoContent).JSON("Successfully Deleted User")
 }

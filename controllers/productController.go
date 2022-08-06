@@ -24,7 +24,7 @@ func CreateProduct(c *fiber.Ctx) error {
 
 	responseProduct := ProductResponse(product)
 
-	return c.Status(fiber.StatusOK).JSON(responseProduct)
+	return c.Status(fiber.StatusCreated).JSON(responseProduct)
 }
 
 func GetProducts(c *fiber.Ctx) error {
@@ -117,5 +117,5 @@ func DeleteProduct(c *fiber.Ctx) error {
 		return c.Status(fiber.ErrNotFound.Code).JSON(err.Error())
 	}
 
-	return c.Status(fiber.StatusOK).JSON("Successfully Deleted Product")
+	return c.Status(fiber.StatusNoContent).JSON("Successfully Deleted Product")
 }
